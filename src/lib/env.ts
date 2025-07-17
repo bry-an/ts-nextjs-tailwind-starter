@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 /**
  * Configuration for type-safe environment variables.
  * Imported through src/app/page.tsx
@@ -7,14 +6,13 @@
 import { z } from 'zod';
 
 const envVariables = z.object({
-  NEXT_PUBLIC_SHOW_LOGGER: z.enum(['true', 'false']).optional(),
+  // Add your environment variables here
 });
 
 envVariables.parse(process.env);
 
 declare global {
   namespace NodeJS {
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
     interface ProcessEnv extends z.infer<typeof envVariables> {}
   }
 }
